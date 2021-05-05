@@ -1,5 +1,5 @@
 import { Route, Redirect } from "react-router-dom";
-import { authService } from "./firebase-config";
+import { authService } from "../firebase-config";
 
 export default function PrivateRoute({ children, ...rest }) {
   return (

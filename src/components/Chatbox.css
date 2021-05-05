@@ -1,0 +1,17 @@
+.message-item {
+  list-style: none;
+  align-items: right;
+}
+.my-message {
+  text-align: right;
+}
+.received-message {
+}
+.author-name {
+  font-size: 0.75rem;
+}
+.author-message {
+  padding: 0.3rem 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}

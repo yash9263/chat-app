@@ -1,3 +1,9 @@
+import Chatapp from "./Chatapp";
+
 export default function Protected() {
-  return <div>Protected</div>;
+  return (
+    <div>
+      <Chatapp />
+    </div>
+  );
 }

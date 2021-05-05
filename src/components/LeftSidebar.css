@@ -1,0 +1,10 @@
+.left-sidebar-container {
+}
+.room-item {
+  list-style: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid black;
+  width: 30vw;
+}

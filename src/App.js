@@ -6,7 +6,7 @@ import SignUp from "./components/SignUp";
 import Protected from "./components/Protected";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (

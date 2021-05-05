@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { authService } from "../firebase-config";
-import useAuth from "./useAuth";
+import useAuth from "./hooks/useAuth";
 import { Link, useHistory } from "react-router-dom";
 
 export default function Navbar() {
