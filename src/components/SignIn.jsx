@@ -41,9 +41,14 @@ export default function SignIn() {
     authService
       .signInWithPopup(provider)
       .then((result) => {
-        // const user = result.user;
+        const user = result.user;
         history.replace(from);
         // console.log(user);
+        firebase.firestore().collection("accounts").doc(user.uid).set({
+          name: user.displayName,
+          photoURL: user.photoURL,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
       })
       .catch((error) => {
         console.error(error);

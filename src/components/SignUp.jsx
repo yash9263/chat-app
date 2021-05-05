@@ -20,9 +20,17 @@ export default function SignUp() {
       authService
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          userCredential.user.updateProfile({
-            displayName: username,
-          });
+          userCredential.user
+            .updateProfile({
+              displayName: username,
+            })
+            .then(() => {
+              const useruid = userCredential.user.uid;
+              firebase.firestore().collection("accounts").doc(useruid).set({
+                name: userCredential.user.displayName,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+              });
+            });
           console.log("you're signed up");
           setError(null);
           setEmail("");
@@ -46,9 +54,14 @@ export default function SignUp() {
     authService
       .signInWithPopup(provider)
       .then((result) => {
-        // const user = result.user;
+        const user = result.user;
         history.replace(from);
         // console.log(user);
+        firebase.firestore().collection("accounts").doc(user.uid).set({
+          name: user.displayName,
+          photoURL: user.photoURL,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
       })
       .catch((error) => {
         console.error(error);
