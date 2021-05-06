@@ -18,54 +18,85 @@ export default function Chatbox({
 }) {
   const [text, setText] = useState("");
   // const { messages, sendMessage } = useSocket();
-  const user = useAuth();
+  const [roomMessages, setRoomMessages] = useState([]);
+  const currentUser = useAuth();
   // console.log(user.displayName);
 
   useEffect(() => {
-    console.log(docs, currentRoomDocs);
-    setCurrentRoomDocs(docs[currentRoomIndex]);
-  }, [currentRoom, currentRoomDocs, docs]);
+    const unsub = firebase
+      .firestore()
+      .collection("rooms")
+      .doc(currentRoom)
+      .collection("messages")
+      .orderBy("createdAt", "asc")
+      .onSnapshot((snap) => {
+        let documets = [];
+        snap.forEach((doc) => {
+          documets.push({ ...doc.data(), id: doc.id });
+          // console.log(doc.data());
+        });
+        setRoomMessages(documets);
+      });
+
+    // setCurrentRoomDocs(docs[currentRoomIndex]);
+    return () => unsub();
+  }, [currentRoom, roomMessages]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
     // sendMessage(text);
-    setText("");
-    await firebase
-      .firestore()
-      .collection("rooms")
-      .doc(currentRoom)
-      .update({
-        users: firebase.firestore.FieldValue.arrayUnion(user.displayName),
-        messages: firebase.firestore.FieldValue.arrayUnion({
-          author: user.displayName,
-          message: text,
-          // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        }),
-      });
-  };
+    // setText("");
+    if (!currentRoomDocs.users.includes(currentUser.displayName)) {
+      await firebase
+        .firestore()
+        .collection("rooms")
+        .doc(currentRoom)
+        .update({
+          users: firebase.firestore.FieldValue.arrayUnion(
+            currentUser.displayName
+          ),
+        });
+    }
 
-  return (
-    <div>
-      <h1>{currentRoomDocs && currentRoomDocs.id}</h1>
-      <ul>
-        {currentRoomDocs &&
-          currentRoomDocs.messages.map((msgObj, index) => {
-            return (
-              <li
-                key={index}
-                className={`message-item  + ${
-                  user.displayName === msgObj.author
-                    ? " my-message"
-                    : " received-message"
-                }`}
-              >
-                <div className="author-name">{msgObj.author}</div>
-                <p className="author-message">{msgObj.message}</p>
-              </li>
-            );
-          })}
-      </ul>
-      {currentRoom && (
+    if (currentRoom) {
+      await firebase
+        .firestore()
+        .collection("rooms")
+        .doc(currentRoom)
+        .collection("messages")
+        .add({
+          text: text,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          name: currentUser.displayName,
+          uid: currentUser.uid,
+          photoURL: currentUser.photoURL,
+        });
+    }
+    setText("");
+  };
+  if (currentRoomDocs) {
+    return (
+      <div>
+        <h1>{currentRoomDocs.id}</h1>
+        <ul>
+          {roomMessages &&
+            roomMessages.map((message) => {
+              return (
+                <li
+                  key={message.id}
+                  className={`message-item  + ${
+                    currentUser.uid === message.uid
+                      ? " my-message"
+                      : " received-message"
+                  }`}
+                >
+                  <div className="author-name">{message.name}</div>
+                  <p className="author-message">{message.text}</p>
+                </li>
+              );
+            })}
+        </ul>
+
         <form action="">
           <input
             type="text"
@@ -78,7 +109,9 @@ export default function Chatbox({
             send
           </button>
         </form>
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 }

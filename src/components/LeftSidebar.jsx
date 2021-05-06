@@ -10,6 +10,7 @@ export default function LeftSidebar({
   docs,
   setCurrentRoomIndex,
   setCurrentRoomDocs,
+  setShowChatBox,
 }) {
   const [newRoom, setNewRoom] = useState("");
 
@@ -20,7 +21,6 @@ export default function LeftSidebar({
     setNewRoom("");
     firebase.firestore().collection("rooms").doc(newRoom).set({
       users: [],
-      messages: [],
     });
     setCurrentRoom(null);
   };
@@ -46,6 +46,7 @@ export default function LeftSidebar({
               className="room-item"
               key={i}
               onClick={(event) => {
+                setShowChatBox(true);
                 setCurrentRoom(doc.id);
                 setCurrentRoomIndex(i);
                 setCurrentRoomDocs(doc);
