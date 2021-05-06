@@ -46,39 +46,41 @@ export default function Chatbox({
     event.preventDefault();
     // sendMessage(text);
     // setText("");
-    await firebase
-      .firestore()
-      .collection("rooms")
-      .doc(currentRoom)
-      .update({
-        users: firebase.firestore.FieldValue.arrayUnion({
-          name: currentUser.displayName,
-          uid: currentUser.uid,
-          photoURL: currentUser.photoURL,
-        }),
-      });
-
-    if (currentRoom) {
+    if (text.length > 0) {
       await firebase
         .firestore()
         .collection("rooms")
         .doc(currentRoom)
-        .collection("messages")
-        .add({
-          text: text,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          name: currentUser.displayName,
-          uid: currentUser.uid,
-          photoURL: currentUser.photoURL,
+        .update({
+          users: firebase.firestore.FieldValue.arrayUnion({
+            name: currentUser.displayName,
+            uid: currentUser.uid,
+            photoURL: currentUser.photoURL,
+          }),
         });
+
+      if (currentRoom) {
+        await firebase
+          .firestore()
+          .collection("rooms")
+          .doc(currentRoom)
+          .collection("messages")
+          .add({
+            text: text,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            name: currentUser.displayName,
+            uid: currentUser.uid,
+            photoURL: currentUser.photoURL,
+          });
+      }
     }
     setText("");
   };
   if (currentRoomDocs) {
     return (
-      <div>
-        <h1>{currentRoomDocs.id}</h1>
-        <ul>
+      <div className="chat-container">
+        <h1 className="chat-title">{currentRoomDocs.id}</h1>
+        <ul className="messages-container">
           {roomMessages &&
             roomMessages.map((message) => {
               return (
@@ -97,21 +99,22 @@ export default function Chatbox({
             })}
         </ul>
 
-        <form action="">
+        <form className="form-container">
           <input
+            className="input-message"
             type="text"
             value={text}
             onChange={(event) => {
               setText(event.target.value);
             }}
           />
-          <button type="submit" onClick={submitHandler}>
+          <button className="send-btn" type="submit" onClick={submitHandler}>
             send
           </button>
         </form>
       </div>
     );
   } else {
-    return <div></div>;
+    return <div className="not-selected">Select Chat or room</div>;
   }
 }

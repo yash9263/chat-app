@@ -36,50 +36,52 @@ export default function UserChatbox({
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    await firebase
-      .firestore()
-      .collection("accounts")
-      .doc(currentUser.uid)
-      .collection("chats")
-      .doc(currentUserChatDocs.id)
-      .collection("messages")
-      .add({
-        text: text,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        name: currentUser.displayName,
-        uid: currentUser.uid,
-        photoURL: currentUser.photoURL,
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (text.length > 0) {
+      await firebase
+        .firestore()
+        .collection("accounts")
+        .doc(currentUser.uid)
+        .collection("chats")
+        .doc(currentUserChatDocs.id)
+        .collection("messages")
+        .add({
+          text: text,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          name: currentUser.displayName,
+          uid: currentUser.uid,
+          photoURL: currentUser.photoURL,
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-    firebase
-      .firestore()
-      .collection("accounts")
-      .doc(currentUserChatDocs.id)
-      .collection("chats")
-      .doc(currentUser.uid)
-      .collection("messages")
-      .add({
-        text: text,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        name: currentUser.displayName,
-        uid: currentUser.uid,
-        photoURL: currentUser.photoURL,
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      firebase
+        .firestore()
+        .collection("accounts")
+        .doc(currentUserChatDocs.id)
+        .collection("chats")
+        .doc(currentUser.uid)
+        .collection("messages")
+        .add({
+          text: text,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          name: currentUser.displayName,
+          uid: currentUser.uid,
+          photoURL: currentUser.photoURL,
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
 
     setText("");
   };
   // console.log(userMessages);
   if (currentUserChatDocs) {
     return (
-      <div>
-        <h1>{currentUserChatDocs.name}</h1>
-        <ul>
+      <div className="chat-container">
+        <h1 className="chat-title">{currentUserChatDocs.name}</h1>
+        <ul className="messages-container">
           {userMessages.map((message) => {
             return (
               <li
@@ -96,8 +98,9 @@ export default function UserChatbox({
             );
           })}
         </ul>
-        <form>
+        <form className="form-container">
           <input
+            className="input-message"
             type="text"
             name="message"
             value={text}
@@ -105,13 +108,13 @@ export default function UserChatbox({
               setText(event.target.value);
             }}
           />
-          <button type="submit" onClick={submitHandler}>
+          <button className="send-btn" type="submit" onClick={submitHandler}>
             send
           </button>
         </form>
       </div>
     );
   } else {
-    return <div></div>;
+    return <div className="not-selected">Select Chat or room</div>;
   }
 }

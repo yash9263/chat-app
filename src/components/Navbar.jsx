@@ -23,8 +23,9 @@ export default function Navbar() {
   return (
     <nav>
       <div className="header">
-        <h1>Title</h1>
+        <h1>Let's Chat</h1>
       </div>
+      {user && <div>{user.displayName}</div>}
       <div className="menu">
         <i
           className="fas fa-bars"
@@ -47,7 +48,6 @@ export default function Navbar() {
                 Sign out
               </button>
             </li>
-            <li>{user.displayName}</li>
           </React.Fragment>
         ) : (
           <React.Fragment>

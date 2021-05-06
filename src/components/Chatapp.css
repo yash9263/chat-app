@@ -1,4 +1,7 @@
 .chatapp-container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  /* display: flex;
+  flex-flow: row; */
+  /* height: 100%; */
 }
