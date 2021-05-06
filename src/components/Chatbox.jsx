@@ -46,19 +46,17 @@ export default function Chatbox({
     event.preventDefault();
     // sendMessage(text);
     // setText("");
-    if (!currentRoomDocs.users.includes(currentUser.displayName)) {
-      await firebase
-        .firestore()
-        .collection("rooms")
-        .doc(currentRoom)
-        .update({
-          users: firebase.firestore.FieldValue.arrayUnion({
-            name: currentUser.displayName,
-            uid: currentUser.uid,
-            photoURL: currentUser.photoURL,
-          }),
-        });
-    }
+    await firebase
+      .firestore()
+      .collection("rooms")
+      .doc(currentRoom)
+      .update({
+        users: firebase.firestore.FieldValue.arrayUnion({
+          name: currentUser.displayName,
+          uid: currentUser.uid,
+          photoURL: currentUser.photoURL,
+        }),
+      });
 
     if (currentRoom) {
       await firebase
