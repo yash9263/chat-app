@@ -6,13 +6,15 @@ export const firebaseContext = createContext();
 
 export default function ProvideAuth({ children }) {
   const [user, setUser] = useState(authService.currentUser);
-
+  // setLoading(true);
   useEffect(() => {
     const unlisten = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
+        // setLoading(false);
       } else {
         setUser(null);
+        // setLoading(false);
       }
     });
     return () => unlisten();

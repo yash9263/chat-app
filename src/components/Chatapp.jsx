@@ -83,6 +83,7 @@ export default function Chatapp() {
         currentRoomIndex={currentRoomIndex}
         docs={docs}
         users={users}
+        showChatBox={showChatBox}
         setShowChatBox={setShowChatBox}
         setCurrentUserChatDocs={setCurrentUserChatDocs}
         setCurrentUserChatDocsIndex={setCurrentUserChatDocsIndex}

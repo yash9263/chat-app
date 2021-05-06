@@ -7,6 +7,7 @@ import Protected from "./components/Protected";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
+import { useEffect, useState } from "react";
 
 function App() {
   return (

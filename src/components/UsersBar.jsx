@@ -9,6 +9,7 @@ export default function UsersBar({
   currentRoomIndex,
   docs,
   users,
+  showChatBox,
   setShowChatBox,
   setCurrentUserChatDocs,
   setCurrentUserChatDocsIndex,
@@ -42,7 +43,8 @@ export default function UsersBar({
       </ul>
       <hr />
       <ul>
-        {currentRoomDocs &&
+        {showChatBox &&
+          currentRoom &&
           roomUsers.map((user, index) => <li key={index}>{user.name}</li>)}
       </ul>
     </div>
