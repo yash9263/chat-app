@@ -30,9 +30,9 @@ export default function UserChatbox({
         });
         setUserMessages(documents);
       });
-
+    console.log(userMessages);
     return () => unsub();
-  }, [currentUserChatDocs, currentUser]);
+  }, [currentUserChatDocs.id]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -74,7 +74,7 @@ export default function UserChatbox({
 
     setText("");
   };
-  console.log(userMessages);
+  // console.log(userMessages);
   if (currentUserChatDocs) {
     return (
       <div>

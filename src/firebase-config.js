@@ -3,12 +3,14 @@ import "firebase/auth";
 import "firebase/firestore";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyBL0lJM4gWl83XLsulEjRJ40_gzFeQIpFc",
-  authDomain: "chatapp-2f899.firebaseapp.com",
-  projectId: "chatapp-2f899",
-  storageBucket: "chatapp-2f899.appspot.com",
-  messagingSenderId: "157570280809",
-  appId: "1:157570280809:web:7f526ac87f3ae7b3da21f8",
+  apiKey: "AIzaSyAIccGIIVBGgPcWmOFp7OhwOWq2rUSOXlc",
+  authDomain: "solitude-admin-client.firebaseapp.com",
+  databaseURL: "https://solitude-admin-client-default-rtdb.firebaseio.com",
+  projectId: "solitude-admin-client",
+  storageBucket: "solitude-admin-client.appspot.com",
+  messagingSenderId: "74737409636",
+  appId: "1:74737409636:web:8f1352a5217f1413768971",
+  measurementId: "G-6SBZQDXKCM",
 };
 
 firebase.initializeApp(firebaseConfig);

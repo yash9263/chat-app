@@ -14,8 +14,6 @@ export default function LeftSidebar({
 }) {
   const [newRoom, setNewRoom] = useState("");
 
-  useEffect(() => {}, [docs]);
-
   const createRoom = (event) => {
     event.preventDefault();
     setNewRoom("");

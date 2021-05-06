@@ -37,10 +37,10 @@ export default function Chatbox({
         });
         setRoomMessages(documets);
       });
-
+    console.log(roomMessages);
     // setCurrentRoomDocs(docs[currentRoomIndex]);
     return () => unsub();
-  }, [currentRoom, roomMessages]);
+  }, [currentRoom]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -52,9 +52,11 @@ export default function Chatbox({
         .collection("rooms")
         .doc(currentRoom)
         .update({
-          users: firebase.firestore.FieldValue.arrayUnion(
-            currentUser.displayName
-          ),
+          users: firebase.firestore.FieldValue.arrayUnion({
+            name: currentUser.displayName,
+            uid: currentUser.uid,
+            photoURL: currentUser.photoURL,
+          }),
         });
     }
 

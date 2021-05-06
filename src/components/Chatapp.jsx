@@ -43,12 +43,12 @@ export default function Chatapp() {
         });
         setUsers(documents);
       });
-
+    // console.log(users);
     return () => unsub();
-  }, [currentRoomDocs, docs]);
+  }, []);
 
   //   console.log(currentRoomIndex, currentRoomDocs);
-  console.log(users);
+  // console.log(users);
   return (
     <div className="chatapp-container">
       <LeftSidebar
@@ -78,7 +78,9 @@ export default function Chatapp() {
         />
       )}
       <UsersBar
+        currentRoom={currentRoom}
         currentRoomDocs={currentRoomDocs}
+        currentRoomIndex={currentRoomIndex}
         docs={docs}
         users={users}
         setShowChatBox={setShowChatBox}

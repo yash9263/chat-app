@@ -4,16 +4,22 @@ import useAuth from "./hooks/useAuth";
 import { useEffect, useState } from "react";
 
 export default function UsersBar({
+  currentRoom,
   currentRoomDocs,
+  currentRoomIndex,
   docs,
   users,
   setShowChatBox,
   setCurrentUserChatDocs,
   setCurrentUserChatDocsIndex,
 }) {
-  const [roomUsers, setRoomUsers] = useState(null);
+  const [roomUsers, setRoomUsers] = useState([]);
+  useEffect(() => {
+    if (currentRoomDocs) {
+      setRoomUsers(docs[currentRoomIndex].users);
+    }
+  }, [currentRoom, docs]);
   const currentUser = useAuth();
-  useEffect(() => {}, [currentRoomDocs]);
   return (
     <div>
       <ul>
@@ -37,9 +43,7 @@ export default function UsersBar({
       <hr />
       <ul>
         {currentRoomDocs &&
-          currentRoomDocs.users.map((user, index) => (
-            <li key={index}>{user}</li>
-          ))}
+          roomUsers.map((user, index) => <li key={index}>{user.name}</li>)}
       </ul>
     </div>
   );

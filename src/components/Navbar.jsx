@@ -47,6 +47,7 @@ export default function Navbar() {
                 Sign out
               </button>
             </li>
+            <li>{user.displayName}</li>
           </React.Fragment>
         ) : (
           <React.Fragment>
