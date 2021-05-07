@@ -1,4 +1,11 @@
 .chatapp-container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  max-width: 800px;
+  margin: 0.5rem auto 0.8rem auto;
+}
+.not-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

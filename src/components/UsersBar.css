@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: column;
   padding: 0 0.4rem;
-  margin: 0.2rem 0.4rem 0.2rem 0;
+  margin: 0.2rem 0rem 0.2rem 0;
 }
 .all-users-container {
   flex: 1 1;
@@ -39,7 +39,22 @@
 }
 .room-users {
   flex: 1 1 0.1px;
-  padding: 0;
+  padding: 0 0.3rem 0 0;
   margin: 0;
   overflow-y: scroll;
+}
+.all-users::-webkit-scrollbar,
+.room-users::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.all-users::-webkit-scrollbar,
+.room-users::-webkit-scrollbar-track {
+  display: none;
+}
+
+.all-users::-webkit-scrollbar,
+.room-users::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
 }

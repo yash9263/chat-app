@@ -3,7 +3,7 @@ import "./Chatapp.css";
 import LeftSidebar from "./LeftSidebar";
 import UserChatbox from "./UserChatbox";
 import UsersBar from "./UsersBar";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
 import useFirestore from "./hooks/useFirestore";
 
@@ -22,6 +22,10 @@ export default function Chatapp() {
 
   //which chat to show user or room
   const [showChatBox, setShowChatBox] = useState(true);
+
+  //responsive UI
+  const [showLeftBar, setShowLeftBar] = useState(false);
+  const [showRightBar, setShowRightBar] = useState(false);
 
   const { docs } = useFirestore("rooms");
 
@@ -59,8 +63,8 @@ export default function Chatapp() {
         docs={docs}
       />
       {showChatBox ? (
-        <div>
-          {currentRoom && (
+        <React.Fragment>
+          {currentRoom ? (
             <Chatbox
               currentRoom={currentRoom}
               setCurrentRoomDocs={setCurrentRoomDocs}
@@ -68,8 +72,10 @@ export default function Chatapp() {
               currentRoomIndex={currentRoomIndex}
               docs={docs}
             />
+          ) : (
+            <div className="not-selected">Select a Chat or room</div>
           )}
-        </div>
+        </React.Fragment>
       ) : (
         <UserChatbox
           currentUserChatDocs={currentUserChatDocs}

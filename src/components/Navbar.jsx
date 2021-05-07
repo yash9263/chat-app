@@ -20,12 +20,15 @@ export default function Navbar() {
       });
   };
 
+  function listClicked() {
+    setShowItems(false);
+  }
+
   return (
     <nav>
-      <div className="header">
-        <h1>Let's Chat</h1>
-      </div>
-      {user && <div>{user.displayName}</div>}
+      <h1 className="header">Let's Chat</h1>
+
+      {user && <div className="user-name">{user.displayName}</div>}
       <div className="menu">
         <i
           className="fas fa-bars"
@@ -34,16 +37,17 @@ export default function Navbar() {
           }}
         ></i>
       </div>
+      <span className="break"></span>
       <ul className={showItems ? "show" : ""}>
-        <li>
+        <li onClick={listClicked}>
           <Link to="/">Home</Link>
         </li>
         {user ? (
           <React.Fragment>
-            <li>
+            <li onClick={listClicked}>
               <Link to="/protected">Protected</Link>
             </li>
-            <li className="mr-6">
+            <li className="mr-6" onClick={listClicked}>
               <button className="" onClick={handleSignOut}>
                 Sign out
               </button>
@@ -51,13 +55,13 @@ export default function Navbar() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <li>
+            <li onClick={listClicked}>
               <Link to="/protected">Protected</Link>
             </li>
-            <li>
+            <li onClick={listClicked}>
               <Link to="/signIn">Sign In</Link>
             </li>
-            <li>
+            <li onClick={listClicked}>
               <Link to="/signUp">Sign Up</Link>
             </li>
           </React.Fragment>

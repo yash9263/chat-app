@@ -4,4 +4,6 @@
   font-family: "Itim", cursive;
   display: grid;
   grid-template-rows: 40px calc(100vh - 40px);
+  /* display: flex;
+  flex-direction: column; */
 }

@@ -18,8 +18,21 @@
 .chat-container .row.messages-container {
   flex: 1 1 0.1px;
   margin: 0;
-  padding: 0;
+  padding: 0 0.3rem 0 0;
   overflow-y: scroll;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.messages-container::-webkit-scrollbar-track {
+  display: none;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
 }
 .message-item {
   list-style: none;

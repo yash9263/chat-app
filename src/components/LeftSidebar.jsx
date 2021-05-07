@@ -20,6 +20,7 @@ export default function LeftSidebar({
     if (newRoom.length > 0) {
       firebase.firestore().collection("rooms").doc(newRoom).set({
         users: [],
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       });
       setCurrentRoom(null);
     }
@@ -44,6 +45,7 @@ export default function LeftSidebar({
           </button>
         </form>
       </div>
+      <div className="title">Rooms</div>
       <ul className="rooms-container">
         {docs.map((doc, i) => (
           <li

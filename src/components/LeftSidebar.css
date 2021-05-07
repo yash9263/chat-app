@@ -1,8 +1,6 @@
 .left-sidebar-container {
-  width: 25vw;
-  min-width: 150px;
   margin: 0.4rem 0.2rem 0 0.4rem;
-  padding: 0.2rem 0.4rem 0 0.2rem;
+  padding: 0.2rem 0.2rem 0 0.2rem;
   border-right: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -29,11 +27,30 @@
   font-size: 1rem;
   border: 1px solid black;
 }
+.title {
+  flex: 0 1 auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0 0 0 0.4rem;
+}
 .rooms-container {
   margin: 0;
-  padding: 0;
+  padding: 0 0.3rem 0 0;
   flex: 1 1 0.1px;
   overflow-y: scroll;
+}
+
+.rooms-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.rooms-container::-webkit-scrollbar-track {
+  display: none;
+}
+
+.rooms-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
 }
 .room-item {
   list-style: none;
