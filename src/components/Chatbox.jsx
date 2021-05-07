@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Chatbox.css";
 import firebase from "firebase/app";
 import { io } from "socket.io-client";
@@ -17,6 +17,7 @@ export default function Chatbox({
   docs,
 }) {
   const [text, setText] = useState("");
+  const dummy = useRef();
   // const { messages, sendMessage } = useSocket();
   const [roomMessages, setRoomMessages] = useState([]);
   const currentUser = useAuth();
@@ -36,6 +37,7 @@ export default function Chatbox({
           // console.log(doc.data());
         });
         setRoomMessages(documets);
+        dummy.current.scrollIntoView({ behaviour: "smooth" });
       });
     console.log(roomMessages);
     // setCurrentRoomDocs(docs[currentRoomIndex]);
@@ -74,13 +76,14 @@ export default function Chatbox({
           });
       }
     }
+    dummy.current.scrollIntoView({ behaviour: "smooth" });
     setText("");
   };
   if (currentRoomDocs) {
     return (
       <div className="chat-container">
-        <h1 className="chat-title">{currentRoomDocs.id}</h1>
-        <ul className="messages-container">
+        <h1 className="row chat-title">{currentRoomDocs.id}</h1>
+        <ul className="row messages-container">
           {roomMessages &&
             roomMessages.map((message) => {
               return (
@@ -97,12 +100,14 @@ export default function Chatbox({
                 </li>
               );
             })}
+          <span ref={dummy}></span>
         </ul>
 
-        <form className="form-container">
+        <form className="row form-container">
           <input
             className="input-message"
             type="text"
+            placeholder="text"
             value={text}
             onChange={(event) => {
               setText(event.target.value);

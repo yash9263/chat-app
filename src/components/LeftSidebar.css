@@ -1,13 +1,14 @@
 .left-sidebar-container {
   width: 25vw;
   min-width: 150px;
-  margin: 0.4rem 0.6rem 0 0.4rem;
-  padding: 0.2rem 0.8rem 0 0.2rem;
+  margin: 0.4rem 0.2rem 0 0.4rem;
+  padding: 0.2rem 0.4rem 0 0.2rem;
   border-right: 1px solid black;
   display: flex;
   flex-direction: column;
 }
-form-container {
+.form-container {
+  flex: 0 1 auto;
 }
 .form {
 }
@@ -31,7 +32,7 @@ form-container {
 .rooms-container {
   margin: 0;
   padding: 0;
-  flex-grow: 1;
+  flex: 1 1 0.1px;
   overflow-y: scroll;
 }
 .room-item {

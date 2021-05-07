@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import firebase from "firebase/app";
 import useAuth from "./hooks/useAuth";
+import "./Chatbox.css";
 
 export default function UserChatbox({
   currentUserChatDocs,
@@ -8,6 +9,7 @@ export default function UserChatbox({
   setCurrentUserChatDocs,
 }) {
   const [text, setText] = useState("");
+  const dummy = useRef();
   const [userMessages, setUserMessages] = useState([]);
   const currentUser = useAuth();
   //   console.log(currentUser);
@@ -29,6 +31,7 @@ export default function UserChatbox({
           documents.push({ ...doc.data(), id: doc.id });
         });
         setUserMessages(documents);
+        dummy.current.scrollIntoView({ behaviour: "smooth" });
       });
     console.log(userMessages);
     return () => unsub();
@@ -73,15 +76,15 @@ export default function UserChatbox({
           console.log(error);
         });
     }
-
+    dummy.current.scrollIntoView({ behaviour: "smooth" });
     setText("");
   };
   // console.log(userMessages);
   if (currentUserChatDocs) {
     return (
       <div className="chat-container">
-        <h1 className="chat-title">{currentUserChatDocs.name}</h1>
-        <ul className="messages-container">
+        <h1 className="row chat-title">{currentUserChatDocs.name}</h1>
+        <ul className="row messages-container">
           {userMessages.map((message) => {
             return (
               <li
@@ -97,8 +100,9 @@ export default function UserChatbox({
               </li>
             );
           })}
+          <span ref={dummy}></span>
         </ul>
-        <form className="form-container">
+        <form className="row form-container">
           <input
             className="input-message"
             type="text"

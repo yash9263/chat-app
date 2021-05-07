@@ -1,25 +1,45 @@
+.usersbar-container {
+  display: flex;
+  flex-flow: column;
+  padding: 0 0.4rem;
+  margin: 0.2rem 0.4rem 0.2rem 0;
+}
+.all-users-container {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+.usersbar-title {
+  font-size: 1.2rem;
+}
+.all-users {
+  flex: 1 1 0.1px;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
 .users-item {
+  margin: 0;
   list-style: none;
   cursor: pointer;
   margin-top: 0.5rem;
   padding: 0.5rem 0.875rem;
   border: 1px solid black;
-}
-
-.message-item {
-  list-style: none;
-  align-items: right;
-}
-.my-message {
-  text-align: right;
-}
-.received-message {
-}
-.author-name {
-  font-size: 0.75rem;
-}
-.author-message {
-  padding: 0.3rem 1rem;
-  border: 1px solid black;
   border-radius: 5px;
+}
+.room-users-container {
+  border-top: 1px solid black;
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+.usersbar-title {
+  padding: 0.2rem 0.4rem;
+  flex: 0 1;
+}
+.room-users {
+  flex: 1 1 0.1px;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
 }
