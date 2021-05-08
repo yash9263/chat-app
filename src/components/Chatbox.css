@@ -59,6 +59,11 @@
   box-shadow: 0px 5px 25px 1px rgba(0, 0, 0, 0.19);
   border-radius: 0.5em;
 }
+.no-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .chat-container .row.form-container {
   flex: 0 1 auto;
 }

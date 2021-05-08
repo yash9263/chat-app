@@ -85,21 +85,27 @@ export default function UserChatbox({
       <div className="chat-container">
         <h1 className="row chat-title">{currentUserChatDocs.name}</h1>
         <ul className="row messages-container">
-          {userMessages.map((message) => {
-            return (
-              <li
-                key={message.id}
-                className={`message-item  + ${
-                  currentUser.uid === message.uid
-                    ? " my-message"
-                    : " received-message"
-                }`}
-              >
-                <div className="author-name">{message.name}</div>
-                <p className="author-message">{message.text}</p>
-              </li>
-            );
-          })}
+          {userMessages.length > 0 ? (
+            userMessages.map((message) => {
+              return (
+                <li
+                  key={message.id}
+                  className={`message-item  + ${
+                    currentUser.uid === message.uid
+                      ? " my-message"
+                      : " received-message"
+                  }`}
+                >
+                  <div className="author-name">{message.name}</div>
+                  <p className="author-message">{message.text}</p>
+                </li>
+              );
+            })
+          ) : (
+            <div className="no-message">
+              Start Conversation with {currentUserChatDocs.name}{" "}
+            </div>
+          )}
           <span ref={dummy}></span>
         </ul>
         <form className="row form-container">
