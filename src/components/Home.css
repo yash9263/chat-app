@@ -1,0 +1,20 @@
+.home-container {
+  /* display: flex; */
+  margin: 0 1rem 0 3rem;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  max-width: 75ch;
+}
+.home-links {
+  text-decoration: none;
+  font-family: "Itim", cursive;
+  border: 1px solid var(--bg);
+  background-color: rgba(59, 130, 246);
+  color: var(--bg);
+  font-weight: 500;
+  margin-right: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}

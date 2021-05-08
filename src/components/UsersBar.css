@@ -8,6 +8,10 @@
   flex: 1 1;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.4rem;
+  padding: 0 0.6rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 25px 2px rgba(0, 0, 0, 0.19);
 }
 .usersbar-title {
   font-size: 1.2rem;
@@ -24,14 +28,26 @@
   cursor: pointer;
   margin-top: 0.5rem;
   padding: 0.5rem 0.875rem;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid var(--bg);
+  border-radius: 5em;
+  box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, 0.08) inset;
+}
+.user-item:hover {
+  cursor: pointer;
+  background: var(--sec);
+}
+
+.room-users-item {
+  cursor: initial;
 }
 .room-users-container {
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
   flex: 1 1;
   display: flex;
   flex-direction: column;
+  padding: 0 0.6rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 25px 2px rgba(0, 0, 0, 0.19);
 }
 .usersbar-title {
   padding: 0.2rem 0.4rem;

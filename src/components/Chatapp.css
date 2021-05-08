@@ -1,11 +1,30 @@
 .chatapp-container {
+  background-color: var(--prim);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   max-width: 800px;
   margin: 0.5rem auto 0.8rem auto;
+  border-radius: 0.5rem;
+  box-shadow: 0px 10px 25px 2px rgba(0, 0, 0, 0.19);
 }
 .not-selected {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .chatapp-container {
+  }
+  .left-sidebar,
+  .left-sidebar-container {
+    display: none;
+  }
+  .chatbox {
+  }
+  .right-sidebar {
+  }
+  .show {
+  }
 }

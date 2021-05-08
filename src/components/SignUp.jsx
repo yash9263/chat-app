@@ -1,8 +1,9 @@
 import { useState } from "react";
 import firebase from "firebase/app";
+import "./SignIn.css";
 import "firebase/auth";
 import { authService } from "../firebase-config";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 export default function SignUp() {
   const history = useHistory();
@@ -70,12 +71,13 @@ export default function SignUp() {
   };
 
   return (
-    <div>
-      <div>Sign Up</div>
-      <form>
-        <label>
-          UserName
+    <div className="container">
+      <div className="page-title">Sign Up</div>
+      <form className="signin-form-container">
+        <div className="input-container">
+          <label className="input-label">UserName</label>
           <input
+            className="text-input"
             type="text"
             placeholder="user name"
             value={username}
@@ -83,10 +85,11 @@ export default function SignUp() {
               setUsername(event.target.value);
             }}
           />
-        </label>
-        <label>
-          Email{" "}
+        </div>
+        <div className="input-container">
+          <label className="input-label">Email</label>
           <input
+            className="text-input"
             type="email"
             name=""
             placeholder="abc@email.com"
@@ -95,10 +98,11 @@ export default function SignUp() {
               setEmail(event.target.value);
             }}
           />
-        </label>
-        <label>
-          Password{" "}
+        </div>
+        <div className="input-container">
+          <label className="input-label">Password</label>
           <input
+            className="text-input"
             type="password"
             name=""
             placeholder="password"
@@ -107,17 +111,18 @@ export default function SignUp() {
               setPassword(event.target.value);
             }}
           />
-        </label>
-        <div>
-          <p>{error && <span>{error}</span>}</p>
+          {error && <p className="error-msg">{error}</p>}
         </div>
-        <button type="submit" onClick={handleSignup}>
-          Sign Up
-        </button>
+        <Link to="/signin">Already have an account</Link>
+        <div className="btn-container">
+          <button className="signin-btn" type="submit" onClick={handleSignup}>
+            Sign Up
+          </button>
+          <button className="signin-btn" onClick={handleSignupWithGoogle}>
+            Google
+          </button>
+        </div>
       </form>
-      <button type="submit" onClick={handleSignupWithGoogle}>
-        Sign Up with google
-      </button>
     </div>
   );
 }

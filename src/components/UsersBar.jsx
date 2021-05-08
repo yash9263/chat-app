@@ -31,7 +31,7 @@ export default function UsersBar({
               currentUser.uid !== user.id ? (
                 <li
                   key={i}
-                  className="users-item"
+                  className="users-item user-item"
                   onClick={() => {
                     setShowChatBox(false);
                     setCurrentUserChatDocs(user);
@@ -51,7 +51,7 @@ export default function UsersBar({
           <ul className="room-users">
             {currentRoom &&
               roomUsers.map((user, index) => (
-                <li className="users-item" key={index}>
+                <li className="users-item room-users-item" key={index}>
                   {user.name}
                 </li>
               ))}

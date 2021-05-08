@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
 .App {
+  background-color: var(--sec);
+  color: var(--bg);
   height: 100%;
   font-family: "Itim", cursive;
   display: grid;

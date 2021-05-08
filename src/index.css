@@ -1,4 +1,11 @@
+:root {
+  --prim: #907fa4;
+  --sec: #a58faa;
+  --acc: #a6d6d6;
+  --bg: #ededd0;
+}
 body {
+  background-color: var(--sec);
   margin: 0;
   height: 100%;
   box-sizing: border-box;

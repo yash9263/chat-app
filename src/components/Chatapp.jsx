@@ -56,6 +56,7 @@ export default function Chatapp() {
   return (
     <div className="chatapp-container">
       <LeftSidebar
+        className="left-sidebar"
         setShowChatBox={setShowChatBox}
         setCurrentRoom={setCurrentRoom}
         setCurrentRoomIndex={setCurrentRoomIndex}
@@ -66,6 +67,7 @@ export default function Chatapp() {
         <React.Fragment>
           {currentRoom ? (
             <Chatbox
+              className="chatbox"
               currentRoom={currentRoom}
               setCurrentRoomDocs={setCurrentRoomDocs}
               currentRoomDocs={currentRoomDocs}
@@ -73,17 +75,25 @@ export default function Chatapp() {
               docs={docs}
             />
           ) : (
-            <div className="not-selected">Select a Chat or room</div>
+            <div className="not-selected">
+              Select a Chat or room
+              <br />
+              👈rooms
+              <br />
+              Chats👉
+            </div>
           )}
         </React.Fragment>
       ) : (
         <UserChatbox
+          className="chatbox"
           currentUserChatDocs={currentUserChatDocs}
           currentUserChatDocsIndex={currentUserChatDocsIndex}
           setCurrentUserChatDocs={setCurrentUserChatDocs}
         />
       )}
       <UsersBar
+        className="right-sidebar"
         currentRoom={currentRoom}
         currentRoomDocs={currentRoomDocs}
         currentRoomIndex={currentRoomIndex}

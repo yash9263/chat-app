@@ -1,8 +1,9 @@
 import { useState } from "react";
 import firebase from "firebase/app";
+import "./SignIn.css";
 import "firebase/auth";
 import { authService } from "../firebase-config";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 export default function SignIn() {
   const history = useHistory();
@@ -57,12 +58,13 @@ export default function SignIn() {
   };
 
   return (
-    <div>
-      <div>Sign In</div>
-      <form>
-        <label>
-          Email
+    <div className="container">
+      <div className="page-title">Sign In</div>
+      <form className="signin-form-container">
+        <div className="input-container">
+          <label className="input-label">Email</label>
           <input
+            className="text-input"
             type="email"
             name=""
             placeholder="abc@email.com"
@@ -71,10 +73,11 @@ export default function SignIn() {
               setEmail(event.target.value);
             }}
           />
-        </label>
-        <label>
-          Password
+        </div>
+        <div className="input-container">
+          <label className="input-label">Password</label>
           <input
+            className="text-input"
             type="password"
             name=""
             placeholder="password"
@@ -83,17 +86,18 @@ export default function SignIn() {
               setPassword(event.target.value);
             }}
           />
-        </label>
-        <div>
-          <p>{error && <span>{error}</span>}</p>
+          {error && <p className="error-msg">{error}</p>}
         </div>
-        <button type="submit" onClick={handleSignin}>
-          Sign In
-        </button>
+        <Link to="/signup">Don't have an account</Link>
+        <div className="btn-container">
+          <button className="signin-btn" type="submit" onClick={handleSignin}>
+            Sign In
+          </button>
+          <button className="signin-btn" onClick={handleSigninWithGoogle}>
+            Google
+          </button>
+        </div>
       </form>
-      <button type="submit" onClick={handleSigninWithGoogle}>
-        Sign In with google
-      </button>
     </div>
   );
 }

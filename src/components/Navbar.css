@@ -1,9 +1,10 @@
 nav {
-  background-color: red;
+  background-color: var(--sec);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   z-index: 1;
+  box-shadow: 0px 5px 25px -10px rgba(0, 0, 0, 0.19);
 }
 
 .header {
@@ -19,13 +20,29 @@ nav ul {
   display: flex;
 }
 
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.out-btn {
+  font-size: 1rem;
+  font-family: inherit;
+  text-decoration: underline;
+  outline: none;
+  border: none;
+  background: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
 nav li {
   list-style: none;
   padding-right: 2em;
 }
 
 nav li:hover {
-  background-color: var(--gra);
+  color: var(--acc);
 }
 .menu {
   display: none;

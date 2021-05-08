@@ -2,9 +2,11 @@
   display: flex;
   flex-flow: column;
   height: 100%;
-  border-right: 1px solid black;
-  padding: 0 0.4rem;
+  /* border-right: 1px solid black; */
+  /* padding: 0 0.4rem; */
   margin-right: 0.4rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 10px 25px 2px rgba(0, 0, 0, 0.19);
 }
 .chat-container .row {
 }
@@ -13,7 +15,10 @@
   margin: 0;
   padding-bottom: 0.4rem;
   margin-bottom: 0.4rem;
-  border-bottom: 1px solid black;
+
+  /* border-bottom: 1px solid var(--bg); */
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+  padding-left: 0.4em;
 }
 .chat-container .row.messages-container {
   flex: 1 1 0.1px;
@@ -36,7 +41,7 @@
 }
 .message-item {
   list-style: none;
-  align-items: right;
+  padding: 0 0.2rem 0 0.4em;
 }
 .my-message {
   text-align: right;
@@ -50,8 +55,9 @@
   display: inline-block;
   /* margin: 0; */
   padding: 0.3rem 1rem;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid var(--bg);
+  box-shadow: 0px 5px 25px 1px rgba(0, 0, 0, 0.19);
+  border-radius: 0.5em;
 }
 .chat-container .row.form-container {
   flex: 0 1 auto;
@@ -62,7 +68,7 @@
 }
 .input-message {
   outline: none;
-  border: 1px solid black;
+  border: 1px solid var(--bg);
   padding: 0.2rem 0.4rem;
   margin-right: 0.2rem;
   border-radius: 4px;
@@ -71,9 +77,16 @@
   font-family: "Itim", cursive;
 }
 .send-btn {
-  border: 1px solid;
+  outline: none;
+  border: none;
+  background: var(--acc);
   border-radius: 4px;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.6em;
   font-size: 0.875rem;
   font-family: "Itim", cursive;
+}
+.send-btn:hover {
+  cursor: pointer;
+  color: var(--bg);
+  background: var(--sec);
 }

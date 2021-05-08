@@ -40,15 +40,19 @@ export default function Navbar() {
       <span className="break"></span>
       <ul className={showItems ? "show" : ""}>
         <li onClick={listClicked}>
-          <Link to="/">Home</Link>
+          <Link className="link" to="/">
+            Home
+          </Link>
         </li>
         {user ? (
           <React.Fragment>
             <li onClick={listClicked}>
-              <Link to="/protected">Protected</Link>
+              <Link className="link" to="/protected">
+                Chats
+              </Link>
             </li>
             <li className="mr-6" onClick={listClicked}>
-              <button className="" onClick={handleSignOut}>
+              <button className="out-btn" onClick={handleSignOut}>
                 Sign out
               </button>
             </li>
@@ -56,13 +60,19 @@ export default function Navbar() {
         ) : (
           <React.Fragment>
             <li onClick={listClicked}>
-              <Link to="/protected">Protected</Link>
+              <Link className="link" to="/protected">
+                Chats
+              </Link>
             </li>
             <li onClick={listClicked}>
-              <Link to="/signIn">Sign In</Link>
+              <Link className="link" to="/signIn">
+                Sign In
+              </Link>
             </li>
             <li onClick={listClicked}>
-              <Link to="/signUp">Sign Up</Link>
+              <Link className="link" to="/signUp">
+                Sign Up
+              </Link>
             </li>
           </React.Fragment>
         )}

@@ -105,6 +105,7 @@ export default function UserChatbox({
         <form className="row form-container">
           <input
             className="input-message"
+            placeholder="text"
             type="text"
             name="message"
             value={text}
