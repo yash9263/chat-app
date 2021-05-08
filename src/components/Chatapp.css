@@ -16,10 +16,11 @@
 
 @media (max-width: 600px) {
   .chatapp-container {
+    height: 100%;
   }
   .left-sidebar,
   .left-sidebar-container {
-    display: none;
+    /* display: none; */
   }
   .chatbox {
   }
