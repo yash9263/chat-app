@@ -1,10 +1,31 @@
-# Getting Started with Create React App
+<h1> Let's Chat </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+<h2>Welcome to Let's Chat app.</h2>
+      <p>
+        Here you can create rooms about topics that you like to talk about with
+        others in which interested people can hop in and share thier interest.
+      </p>
+      <p>
+        You can also personally message if you don't want it to share in the
+        room.
+      </p>
+      <h3>Features</h3>
+      <ul>
+        <li>Create rooms</li>
+        <li>Direct Messages</li>
+        <li>Show all the users in the current room</li>
+        <li>Right side upper section can select any user to DM</li>
+      </ul>
+      <h3>Bugs</h3>
+      <p>
+        After logging in if you are redirected to the signin page but your name
+        is showing in the nav bar. Then you can click on the chats link it will
+        direct you to the chats. This only happens if you refresh the page.
+      </p>
+      <h3>Responsive UI is not completed.</h3>
+      <p>
+        So If you will open it on a phone it will not look or work as expected
+      </p>
 
 ### `npm start`
 

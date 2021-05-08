@@ -25,6 +25,7 @@ export default function SignIn() {
           setError("");
           history.replace(from);
           console.log("you're signed in");
+          setError(null);
         })
         .catch((error) => {
           console.log(error);
@@ -50,6 +51,7 @@ export default function SignIn() {
           photoURL: user.photoURL,
           createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
+        setError(null);
       })
       .catch((error) => {
         console.error(error);
