@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <PrivateRoute exact path="/protected">
+          <PrivateRoute path="/protected">
             <Protected />
           </PrivateRoute>
         </div>
