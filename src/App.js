@@ -14,26 +14,26 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Loading from "./components/Loading";
 
 function App() {
-  const [user, loading] = useAuthState(firebase.auth());
-  if (!loading) {
-    return (
-      <ProvideAuth>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Home} />
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
-            <PrivateRoute exact path="/protected">
-              <Protected />
-            </PrivateRoute>
-          </div>
-        </Router>
-      </ProvideAuth>
-    );
-  } else {
-    return <Loading />;
-  }
+  // const [user, loading] = useAuthState(firebase.auth());
+  // if (!loading) {
+  return (
+    <ProvideAuth>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Home} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/signup" component={SignUp} />
+          <PrivateRoute exact path="/protected">
+            <Protected />
+          </PrivateRoute>
+        </div>
+      </Router>
+    </ProvideAuth>
+  );
+  // } else {
+  //   return <Loading />;
+  // }
 }
 
 export default App;
