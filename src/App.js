@@ -15,31 +15,28 @@ import Loading from "./components/Loading";
 
 function App() {
   const [user, loading] = useAuthState(firebase.auth());
-  // if (!loading) {
-  return (
-    <ProvideAuth>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
-            {!loading ? (
-              <PrivateRoute path="/protected">
+  if (!loading) {
+    return (
+      <ProvideAuth>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
+
+              <PrivateRoute exact path="/protected">
                 <Protected />
               </PrivateRoute>
-            ) : (
-              <Loading />
-            )}
-          </Switch>
-        </div>
-      </Router>
-    </ProvideAuth>
-  );
-  // } else {
-  //   return <Loading />;
-  // }
+            </Switch>
+          </div>
+        </Router>
+      </ProvideAuth>
+    );
+  } else {
+    return <Loading />;
+  }
 }
 
 export default App;
