@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Chatbox.css";
 import firebase from "firebase/app";
-import { io } from "socket.io-client";
-import useAuth from "./hooks/useAuth";
-import useFirestore from "./hooks/useFirestore";
-// import useSocket from "./hooks/useSocket";
-
-// const Server = "localhost:4000";
-// const NewMessageEvent = "chat message";
+import useAuth from "../hooks/useAuth";
 
 export default function Chatbox({
   currentRoom,

@@ -1,11 +1,11 @@
-import Chatbox from "./Chatbox";
+import Chatbox from "../chatbox/Chatbox";
 import "./Chatapp.css";
-import LeftSidebar from "./LeftSidebar";
-import UserChatbox from "./UserChatbox";
-import UsersBar from "./UsersBar";
+import LeftSidebar from "../roomsbar/LeftSidebar";
+import UserChatbox from "../chatbox/UserChatbox";
+import UsersBar from "../usersbar/UsersBar";
 import React, { useEffect, useState } from "react";
 import firebase from "firebase/app";
-import useFirestore from "./hooks/useFirestore";
+import useFirestore from "../hooks/useFirestore";
 
 export default function Chatapp() {
   const [users, setUsers] = useState([]);
@@ -16,9 +16,8 @@ export default function Chatapp() {
 
   //current selected user chat states
   const [currentUserChatDocs, setCurrentUserChatDocs] = useState(null);
-  const [currentUserChatDocsIndex, setCurrentUserChatDocsIndex] = useState(
-    null
-  );
+  const [currentUserChatDocsIndex, setCurrentUserChatDocsIndex] =
+    useState(null);
 
   //which chat to show user or room
   const [showChatBox, setShowChatBox] = useState(true);

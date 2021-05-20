@@ -1,6 +1,5 @@
-import useFirestore from "./hooks/useFirestore";
 import "./UsersBar.css";
-import useAuth from "./hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
 export default function UsersBar({

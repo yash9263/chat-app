@@ -1,9 +1,9 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import { Route, Redirect } from "react-router-dom";
-import { authService } from "../firebase-config";
+import { authService } from "../../firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Loading from "./Loading";
+import Loading from "../loading/Loading";
 
 export default function PrivateRoute({ children, ...rest }) {
   const [user, loading] = useAuthState(firebase.auth());

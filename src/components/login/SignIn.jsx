@@ -2,7 +2,7 @@ import { useState } from "react";
 import firebase from "firebase/app";
 import "./SignIn.css";
 import "firebase/auth";
-import { authService } from "../firebase-config";
+import { authService } from "../../firebase-config";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 export default function SignIn() {

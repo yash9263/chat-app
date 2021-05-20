@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./LeftSidebar.css";
-import { Link } from "react-router-dom";
 import firebase from "firebase/app";
-import useFirestore from "./hooks/useFirestore";
 
 export default function LeftSidebar({
   rooms,

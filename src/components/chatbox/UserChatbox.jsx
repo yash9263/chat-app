@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import firebase from "firebase/app";
-import useAuth from "./hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import "./Chatbox.css";
 
 export default function UserChatbox({
