@@ -7,36 +7,26 @@ import Protected from "./components/Protected";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
-import { useEffect, useState } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
-import Loading from "./components/Loading";
 
 function App() {
-  const [user, loading] = useAuthState(firebase.auth());
-  if (!loading) {
-    return (
-      <ProvideAuth>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/signup" component={SignUp} />
+  return (
+    <ProvideAuth>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
 
-              <PrivateRoute exact path="/protected">
-                <Protected />
-              </PrivateRoute>
-            </Switch>
-          </div>
-        </Router>
-      </ProvideAuth>
-    );
-  } else {
-    return <Loading />;
-  }
+            <PrivateRoute exact path="/protected">
+              <Protected />
+            </PrivateRoute>
+          </Switch>
+        </div>
+      </Router>
+    </ProvideAuth>
+  );
 }
 
 export default App;
