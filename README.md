@@ -16,12 +16,6 @@
         <li>Show all the users in the current room</li>
         <li>Right side upper section can select any user to DM</li>
       </ul>
-      <h3>Bugs</h3>
-      <p>
-        After logging in if you are redirected to the signin page but your name
-        is showing in the nav bar. Then you can click on the chats link it will
-        direct you to the chats. This only happens if you refresh the page.
-      </p>
       <h3>Responsive UI is not completed.</h3>
       <p>
         So If you will open it on a phone it will not look or work as expected
