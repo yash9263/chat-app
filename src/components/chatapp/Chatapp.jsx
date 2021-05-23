@@ -68,10 +68,7 @@ export default function Chatapp() {
             <Chatbox
               className="chatbox"
               currentRoom={currentRoom}
-              setCurrentRoomDocs={setCurrentRoomDocs}
               currentRoomDocs={currentRoomDocs}
-              currentRoomIndex={currentRoomIndex}
-              docs={docs}
             />
           ) : (
             <div className="not-selected">
@@ -87,8 +84,6 @@ export default function Chatapp() {
         <UserChatbox
           className="chatbox"
           currentUserChatDocs={currentUserChatDocs}
-          currentUserChatDocsIndex={currentUserChatDocsIndex}
-          setCurrentUserChatDocs={setCurrentUserChatDocs}
         />
       )}
       <UsersBar

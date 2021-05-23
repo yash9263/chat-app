@@ -3,13 +3,7 @@ import "./Chatbox.css";
 import firebase from "firebase/app";
 import useAuth from "../hooks/useAuth";
 
-export default function Chatbox({
-  currentRoom,
-  currentRoomDocs,
-  setCurrentRoomDocs,
-  currentRoomIndex,
-  docs,
-}) {
+export default function Chatbox({ currentRoom, currentRoomDocs }) {
   const [text, setText] = useState("");
   const dummy = useRef();
   // const { messages, sendMessage } = useSocket();

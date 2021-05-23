@@ -46,7 +46,12 @@
 .my-message {
   text-align: right;
 }
-.received-message {
+.my-message .author-message {
+  background-color: blue;
+}
+.received-message .author-message {
+  background-color: white;
+  color: rgba(0, 0, 0);
 }
 .author-name {
   font-size: 0.75rem;
@@ -55,7 +60,7 @@
   display: inline-block;
   /* margin: 0; */
   padding: 0.3rem 1rem;
-  border: 1px solid var(--bg);
+  /* border: 1px solid var(--bg); */
   box-shadow: 0px 5px 25px 1px rgba(0, 0, 0, 0.19);
   border-radius: 0.5em;
 }

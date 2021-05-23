@@ -3,11 +3,7 @@ import firebase from "firebase/app";
 import useAuth from "../hooks/useAuth";
 import "./Chatbox.css";
 
-export default function UserChatbox({
-  currentUserChatDocs,
-  currentUserChatDocsIndex,
-  setCurrentUserChatDocs,
-}) {
+export default function UserChatbox({ currentUserChatDocs }) {
   const [text, setText] = useState("");
   const dummy = useRef();
   const [userMessages, setUserMessages] = useState([]);
@@ -33,53 +29,40 @@ export default function UserChatbox({
         setUserMessages(documents);
         dummy.current.scrollIntoView({ behaviour: "smooth" });
       });
-    console.log(userMessages);
+    // console.log(userMessages);
     return () => unsub();
   }, [currentUserChatDocs.id]);
+
+  const updateChat = async (senderId, reciverId) => {
+    await firebase
+      .firestore()
+      .collection(`accounts/${senderId}/chats/${reciverId}/messages`)
+      .add({
+        text: text,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        name: currentUser.displayName,
+        uid: currentUser.uid,
+        photoURL: currentUser.photoURL,
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const submitHandler = async (event) => {
     event.preventDefault();
     if (text.length > 0) {
-      await firebase
-        .firestore()
-        .collection("accounts")
-        .doc(currentUser.uid)
-        .collection("chats")
-        .doc(currentUserChatDocs.id)
-        .collection("messages")
-        .add({
-          text: text,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          name: currentUser.displayName,
-          uid: currentUser.uid,
-          photoURL: currentUser.photoURL,
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-      firebase
-        .firestore()
-        .collection("accounts")
-        .doc(currentUserChatDocs.id)
-        .collection("chats")
-        .doc(currentUser.uid)
-        .collection("messages")
-        .add({
-          text: text,
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          name: currentUser.displayName,
-          uid: currentUser.uid,
-          photoURL: currentUser.photoURL,
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      await updateChat(currentUser.uid, currentUserChatDocs.id);
+      await updateChat(currentUserChatDocs.id, currentUser.uid);
+    } else {
+      console.log("empty message box");
     }
     dummy.current.scrollIntoView({ behaviour: "smooth" });
     setText("");
   };
+
   // console.log(userMessages);
+
   if (currentUserChatDocs) {
     return (
       <div className="chat-container">
@@ -103,7 +86,7 @@ export default function UserChatbox({
             })
           ) : (
             <div className="no-message">
-              Start Conversation with {currentUserChatDocs.name}{" "}
+              Start Conversation with {currentUserChatDocs.name}
             </div>
           )}
           <span ref={dummy}></span>
