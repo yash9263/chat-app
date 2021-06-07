@@ -59,6 +59,25 @@ export default function SignIn() {
       });
   };
 
+  const signInAsGuest = (event) => {
+    event.preventDefault();
+    firebase
+      .auth()
+      .signInWithEmailAndPassword("guest@gmail.com", "asdfgh")
+      .then(() => {
+        setEmail("");
+        setPassword("");
+        setError("");
+        history.replace(from);
+        console.log("you're signed in");
+        setError(null);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+  };
+
   return (
     <div className="container">
       <div className="page-title">Sign In</div>
@@ -94,6 +113,9 @@ export default function SignIn() {
         <div className="btn-container">
           <button className="signin-btn" type="submit" onClick={handleSignin}>
             Sign In
+          </button>
+          <button className="signin-btn" onClick={signInAsGuest}>
+            Guest
           </button>
           <button className="signin-btn" onClick={handleSigninWithGoogle}>
             Google
