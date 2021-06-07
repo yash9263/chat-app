@@ -30,7 +30,7 @@ export default function Home() {
       </div>
       <div className="illust-cont">
         <img
-          src="https://raw.githubusercontent.com/yash9263/chat-app/master/src/components/home/undraw_online_chat_d7ek.svg"
+          src="https://raw.githubusercontent.com/yash9263/chat-app/master/src/components/home/undraw_online_chat.svg"
           alt="chat-illustartion"
         />
       </div>
