@@ -1,5 +1,8 @@
 .home-container {
-  /* display: flex; */
+  display: flex;
+  justify-content: space-between;
+}
+.details-cont {
   margin: 0 1rem 0 3rem;
   justify-content: center;
   align-items: center;
@@ -17,4 +20,6 @@ p {
   margin-right: 1.2rem;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+}
+.illust-cont {
 }
